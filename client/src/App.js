@@ -7,7 +7,7 @@ import Home from './Components/Home';
 import {useState} from 'react';
 
 
-function App() {
+function App(props) {
   const [currentUser,setCurrentUser]=useState({
     id: 0,
     username:'',
@@ -21,7 +21,7 @@ function App() {
 
 
 
-  const handleSubmit = (formData) => {
+  const handleLoginSubmit = (formData) => {
      
       console.log(formData)
 
@@ -38,9 +38,57 @@ function App() {
           .then(handleResponse)
   }
 
+  const handleRegisterSubmit = (formData) => {
+     
+    console.log(formData)
 
-  let handleResponse= (res) => {
-    setCurrentUser=res   
+    fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify(
+            formData
+        )
+        })
+        .then(res => res.json())
+        .then(handleResponse)
+}
+
+  let handleResponse= (resp) => {
+    console.log(resp)
+    if(resp.id){
+      setCurrentUser({
+        id: resp.id,
+        username: resp.username,
+        name: "",
+        rating: 0,
+        age: 0,
+        profile_pic: "",
+        country: ""
+      })
+      // props.history.push("/user")
+    } else {
+      alert("Username or password is incorrect")
+    }
+  }
+
+  const renderForm = (routerProps) => {
+    if(routerProps.location.pathname === "/login"){
+      return <Login
+        formName="Login Form"
+        handleSubmit={handleLoginSubmit}
+      />
+    } else if (routerProps.location.pathname === "/register") {
+      return <Login
+        formName="Register Form"
+        handleSubmit={handleRegisterSubmit}
+      />
+    }
+  }
+
+  const renderProfile = (routerProps) => {
+    return <User username={currentUser.username}/>
   }
 
 
@@ -57,15 +105,9 @@ console.log(currentUser)
                 
 
                {/* FIRST ROUTE */}
-              <Route path={'/login'}
-                 render={routerProps => {
-                 return <div>
-                            <Login 
-                             {...routerProps}handleSubmit={handleSubmit}>
-                            </Login>
-                            
-                       </div>}}>
-              </Route>
+          <Route path="/login" render={ renderForm } />
+          <Route path="/register" render={ renderForm } />
+          <Route path="/user" render={ renderProfile } />
 
 
 
