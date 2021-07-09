@@ -1,10 +1,16 @@
 class UsersController < ApplicationController
 
+    before_action :authorized, only: [:me]
+
+    def me
+        wristband = encode_token({user_id: @user.id})
+        render json: {user: UserSerializer.new(@user), token: wristband}
+    end
     def index
         users = User.all
         render json: users
     end
-    
+
     def create
         user = User.create(user_params)
         if user.valid?
@@ -15,11 +21,12 @@ class UsersController < ApplicationController
     end
 
     def login
-        user = User.find_by(username: params[:username])
-        if user && user.authenticate(params[:password])
-            render json: user
+        user = User.find_by(username: params[:formData][:username])
+        if user && user.authenticate(params[:formData][:password])
+            wristband = encode_token({user_id: user.id})
+            render json: {user: UserSerializer.new(user), token: wristband}
         else
-            render json: {error: "Username or password is incorrect"}
+            render json: {error: "incorrect username or password"}
         end
     end
 
