@@ -21,10 +21,7 @@ function App(props) {
     })
  
 
-
-
   const handleLoginSubmit = (formData) => {
-     
       console.log(formData)
 
       fetch("http://localhost:3000/login", {
@@ -41,7 +38,6 @@ function App(props) {
   }
 
   const handleRegisterSubmit = (formData) => {
-     
     console.log(formData)
 
     fetch("http://localhost:3000/users", {
@@ -54,7 +50,7 @@ function App(props) {
         )
         })
         .then(res => res.json())
-        .then(handleResponse)
+        .then((res) => handleRegisterResponse(res))
 }
 
   let handleResponse= (resp) => {
@@ -72,11 +68,21 @@ function App(props) {
         token: resp.token
       })
       // localStorage.token = resp.token
-      // props.history.push("/")
+      props.history.push("/user")
       
     } else {
       alert("Username or password is incorrect")
     }
+  }
+
+  let handleRegisterResponse = (resp) => {
+    console.log(resp)
+    if(resp.id){
+      alert("New user registered.")
+      props.history.push("/login")
+    }
+    else {alert(resp.errors)
+  }
   }
 
   const renderForm = (routerProps) => {
@@ -102,56 +108,16 @@ console.log(currentUser)
   return (
     
            <div>
-              <NavBar
-                
-                //  loginState={loginState}
-                //  toggleLoginState={toggleLoginState}
-              />
+              <NavBar/>
               <Switch>
-                
-
                {/* FIRST ROUTE */}
           <Route path="/login" render={ renderForm } />
           <Route path="/register" render={ renderForm } />
           <Route path="/user" render={ renderProfile } />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        {/* <Route path={'/cart'}
-        render={routerProps => {
-        return <div>
-        <User
-          // {...routerProps}carts={carts}
-          // currentUser={currentUser}
-          // beanies={beanies}
-          // deleteFromCart={deleteFromCart}
-          // updateCartsState={updateCartsState}
-            >
-          </User>
-          </div>
-        }}>
-        </Route>
-       
-        <Route path={'/'}>
+          {/* <Route path={'/'} >
           <Home />
-        </Route> */}
-      </Switch>
+          </Route>  */}
+            </Switch>
     </div>
 
 
@@ -163,4 +129,4 @@ console.log(currentUser)
   );
 }
 
-export default App;
+export default withRouter(App);

@@ -22,14 +22,6 @@ export default function Register(props) {
     //STATE NUMBER 7
      const [country, setCountry]=useState("")
 
-
-
-
-
-
-
-
-
   
 let submitHandler = (e) => {
     e.preventDefault()
@@ -44,8 +36,7 @@ let submitHandler = (e) => {
         country: country
     }
     props.handleSubmit(formData)
-    // alert("Registration Complete")
-    // props.history.push("/login")
+   
 
 
     }
