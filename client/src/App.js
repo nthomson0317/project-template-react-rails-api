@@ -1,10 +1,11 @@
 import './App.css';
-import {Switch, Link, Route, withRouter} from 'react-router-dom'
+import {Switch, Link, Route, withRouter, Redirect} from 'react-router-dom'
 import NavBar from './Components/NavBar';
 import User from './Components/User';
 import Login from './Components/Login';
 import Home from './Components/Home';
 import {useState} from 'react';
+import Register from './Components/Register';
 
 
 function App(props) {
@@ -42,7 +43,7 @@ function App(props) {
      
     console.log(formData)
 
-    fetch("http://localhost:3000/login", {
+    fetch("http://localhost:3000/users", {
         method: "POST",
         headers: {
             "Content-type": "application/json"
@@ -67,6 +68,13 @@ function App(props) {
         profile_pic: "",
         country: ""
       })
+      
+      const location = {
+        pathname: '/user'
+      }
+      <Redirect to={location}/>
+
+      <Redirect to='/register' />
       // props.history.push("/user")
     } else {
       alert("Username or password is incorrect")
@@ -80,7 +88,7 @@ function App(props) {
         handleSubmit={handleLoginSubmit}
       />
     } else if (routerProps.location.pathname === "/register") {
-      return <Login
+      return <Register
         formName="Register Form"
         handleSubmit={handleRegisterSubmit}
       />
