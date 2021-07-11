@@ -16,7 +16,8 @@ function App(props) {
     rating: 0,
     age:0,
     profile_pic:"",
-    country:""
+    country:"",
+    token: ""
     })
  
 
@@ -31,12 +32,12 @@ function App(props) {
           headers: {
               "Content-type": "application/json"
           },
-          body: JSON.stringify(
-              formData
-          )
+          body: JSON.stringify({
+            formData
+          })
           })
           .then(res => res.json())
-          .then(handleResponse)
+          .then((res) => handleResponse(res))
   }
 
   const handleRegisterSubmit = (formData) => {
@@ -58,24 +59,21 @@ function App(props) {
 
   let handleResponse= (resp) => {
     console.log(resp)
-    if(resp.id){
+    console.log(resp.user)
+    if(resp.token){
       setCurrentUser({
-        id: resp.id,
-        username: resp.username,
-        name: "",
-        rating: 0,
-        age: 0,
-        profile_pic: "",
-        country: ""
+        id: resp.user.id,
+        username: resp.user.username,
+        name: resp.user.name,
+        rating: resp.user.rating,
+        age: resp.user.age,
+        profile_pic: resp.user.profile_pic,
+        country: resp.user.country,
+        token: resp.token
       })
+      // localStorage.token = resp.token
+      // props.history.push("/")
       
-      const location = {
-        pathname: '/user'
-      }
-      <Redirect to={location}/>
-
-      <Redirect to='/register' />
-      // props.history.push("/user")
     } else {
       alert("Username or password is incorrect")
     }
