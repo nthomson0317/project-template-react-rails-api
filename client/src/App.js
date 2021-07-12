@@ -18,8 +18,10 @@ function App(props) {
     age:0,
     profile_pic:"",
     country:"",
-    token: ""
+    token: "",
+    openings: []
     })
+    // const [openings, setOpenings] = useState([])
  
 
   const handleLoginSubmit = (formData) => {
@@ -66,8 +68,10 @@ function App(props) {
         age: resp.user.age,
         profile_pic: resp.user.profile_pic,
         country: resp.user.country,
-        token: resp.token
+        token: resp.token,
+        openings: resp.user.openings
       })
+  
       // localStorage.token = resp.token
       props.history.push("/user")
       
@@ -101,7 +105,8 @@ function App(props) {
   }
 
   const renderProfile = (routerProps) => {
-    return <User username={currentUser.username}/>
+    return <User user={currentUser}
+    openings={currentUser.openings}/>
   }
 
 

@@ -25,7 +25,7 @@ class UsersController < ApplicationController
         user = User.find_by(username: params[:formData][:username])
         if user && user.authenticate(params[:formData][:password])
             wristband = encode_token({user_id: user.id})
-            render json: {user: UserSerializer.new(user), token: wristband}
+            render json: {user: UserSerializer.new(user), token: wristband, openings: user.openings }
         else
             render json: {error: "incorrect username or password"}
         end
