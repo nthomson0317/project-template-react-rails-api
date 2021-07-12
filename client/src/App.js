@@ -8,6 +8,7 @@ import {useState} from 'react';
 import Register from './Components/Register';
 
 
+
 function App(props) {
   const [currentUser,setCurrentUser]=useState({
     id: 0,
@@ -114,9 +115,9 @@ console.log(currentUser)
           <Route path="/login" render={ renderForm } />
           <Route path="/register" render={ renderForm } />
           <Route path="/user" render={ renderProfile } />
-          {/* <Route path={'/'} >
+          <Route path={'/'} >
           <Home />
-          </Route>  */}
+          </Route> 
             </Switch>
     </div>
 

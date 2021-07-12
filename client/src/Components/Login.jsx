@@ -1,8 +1,17 @@
 import React from 'react'
 import {useState} from 'react';
 import '@fontsource/roboto'
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 
-
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
+}));
 
 
 export default function Login(props) {
@@ -12,11 +21,7 @@ export default function Login(props) {
      //STATE NUMBER 2
     const [password, setPassword]=useState("")
 
-
-
-
-
-
+    const classes = useStyles()
 
 
   
@@ -27,7 +32,7 @@ let submitHandler = (e) => {
         username: userName,    
         password: password}      
         props.handleSubmit(formData)
-
+        // console.log(formData)
   }
 
 
@@ -39,25 +44,30 @@ const handleChangePassword = (e) => {
 
 
 
-
-
-
  
     return (
         <div>    
             <form onSubmit={submitHandler}>
              <h1>{props.formName}</h1>
-             <label htmlFor="username">Username:</label>
-                <input type="text" autoComplete="off"
-                 name="username"
-                 value={userName}
-                 onChange={handleChangeUserName}
-                />
-             <label htmlFor="password">Password:</label>
-             <input type="password" autoComplete="off"
-                name="password"
-                value={password}
-                onChange={handleChangePassword}
+             <TextField 
+             label="Username"
+             type="text" 
+             autoComplete="off"
+             variant="outlined"
+             name="username"
+             value={userName}
+             onChange={handleChangeUserName}
+             className={classes.root}
+             htmlFor="username"></TextField>
+             <TextField htmlFor="password"
+             label="Password"
+             type="text" 
+             autoComplete="off"
+             variant="outlined"
+              name="password"
+              value={password}
+              onChange={handleChangePassword}
+              className={classes.root}
              />
                <input type="submit" value="Submit"/>
              </form>
