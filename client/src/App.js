@@ -57,8 +57,8 @@ function App(props) {
 }
 
   let handleResponse= (resp) => {
-    console.log(resp)
-    console.log(resp.user)
+    // console.log(resp)
+    // console.log(resp.user)
     if(resp.token){
       setCurrentUser({
         id: resp.user.id,
@@ -69,7 +69,7 @@ function App(props) {
         profile_pic: resp.user.profile_pic,
         country: resp.user.country,
         token: resp.token,
-        openings: resp.user.openings
+        openings: resp.openings
       })
   
       // localStorage.token = resp.token
@@ -104,9 +104,47 @@ function App(props) {
     }
   }
 
+//  THIS IS OUR HANDLE SUBMIT FOR SUBMITTING AN OPENING
+  const handleOpeningSubmit = (formData) => {
+   
+    fetch("http://localhost:3000/openings", {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json",
+            "authorization": currentUser.token
+        },
+        body: JSON.stringify(
+          formData
+        )
+        })
+        .then(res => res.json())
+        .then((res) => addOpeningToState(res))
+}
+
+
+
+// CHANGE THE STATE OF OPENINGS IN ZE FRONT
+const addOpeningToState = (newlyCreatedOpening) => {
+  console.log(currentUser.openings)
+ let copyOfOpenings= [...currentUser.openings, newlyCreatedOpening]
+ console.log(newlyCreatedOpening)
+ console.log(copyOfOpenings)
+
+
+ setCurrentUser({
+  openings: copyOfOpenings
+ })
+}
+
+
+
+
+
+
+
   const renderProfile = (routerProps) => {
     return <User user={currentUser}
-    openings={currentUser.openings}/>
+    openings={currentUser.openings} openingSubmit={handleOpeningSubmit}/>
   }
 
 
