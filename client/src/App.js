@@ -1,5 +1,5 @@
 import './App.css';
-import {Switch, Link, Route, withRouter, Redirect} from 'react-router-dom'
+import {Switch, Link, Route, withRouter, Redirect, BrowserRouter} from 'react-router-dom'
 import NavBar from './Components/NavBar';
 import User from './Components/User';
 import Login from './Components/Login';
@@ -73,7 +73,7 @@ function App(props) {
         games: resp.games
       })
   
-      // localStorage.token = resp.token
+      localStorage.token = resp.token
       props.history.push("/user")
       
     } else {
@@ -156,18 +156,20 @@ const deleteOpeningFromState = (deletedId) => {
     openings={currentUser.openings}
     openingSubmit={handleOpeningSubmit}
     deleteOpening={deleteOpeningFromState}
-    renderGames={renderGames}/>
+    />
   }
 
 
   const renderGames = (routerProps) => {
-    return <Game user={currentUser}
     
+     
+      return (<Game user={currentUser}/>
     
-    />
+      )
   }
 
 console.log(currentUser)
+console.log(props)
   return (
     
            <div>
@@ -177,7 +179,7 @@ console.log(currentUser)
           <Route path="/login" render={ renderForm } />
           <Route path="/register" render={ renderForm } />
           <Route path="/user" render={ renderProfile } />
-          <Route path="/games" render={ renderGames } />
+          <Route path="/games" component={Game} />
           <Route path={'/'} >
           <Home />
           </Route> 

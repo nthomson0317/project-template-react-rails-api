@@ -6,6 +6,7 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import { useHistory } from "react-router-dom";
 
 
 const useStyles = makeStyles({
@@ -49,29 +50,13 @@ export default function Game(props) {
       
     
     
-    
-    
     return (
 
         <div>
-        <br></br>
-        <Card className={classes.root} variant="outlined"> 
-         <CardContent>
-        <Typography variant="h3" component="h2">
-          {props.currentUser.games}
-        </Typography>
-        <Typography variant="body2" component="p">
-          {props.opening.moves}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small"
-       
-         >Delete</Button>
-      </CardActions>
-    </Card>
-    <br></br>
-    </div>
+          "Games component"
+          </div>
+
+   
 
 
 

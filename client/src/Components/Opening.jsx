@@ -6,6 +6,7 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import { useHistory } from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -28,8 +29,14 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function Opening(props) {
+
     const classes = useStyles();
-    const bull = <span className={classes.bullet}>•</span>;
+    // const history = useHistory();
+
+    const handleClick = () => {
+      console.log('hi')
+       history.push("/games");
+    }
 
     const deleteHandler = () => {
       fetch(`http://localhost:3000/openings/${props.opening.id}`, {
@@ -41,17 +48,19 @@ export default function Opening(props) {
       })
         .then((r) => r.json())
         .then((r) => props.deleteOpening(r.id));
-      
-    
-    
-    
     }
+
+
+
+
     console.log(props)
     
     return (
     <div>
         <br></br>
-        <Card className={classes.root} variant="outlined"     > 
+        <Card className={classes.root} variant="outlined"
+        onClick={handleClick}
+        > 
       <CardContent>
         <Typography variant="h3" component="h2">
           {props.opening.name}
@@ -71,6 +80,3 @@ export default function Opening(props) {
     )
 }
 
-// onClick={() => {
-//   props.renderGames}
-// }
