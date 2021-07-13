@@ -21,7 +21,6 @@ function App(props) {
     token: "",
     openings: []
     })
-    // const [openings, setOpenings] = useState([])
  
 
   const handleLoginSubmit = (formData) => {
@@ -136,7 +135,15 @@ const addOpeningToState = (newlyCreatedOpening) => {
  })
 }
 
-
+//DELETE OPENING FROM STATE IN THE FRONT
+const deleteOpeningFromState = (deletedId) => {
+   let copyOfOpenings = currentUser.openings.filter((openingObj) => {
+     return openingObj.id !== deletedId
+   })
+   setCurrentUser({
+     openings: copyOfOpenings
+   })
+}
 
 
 
@@ -144,7 +151,9 @@ const addOpeningToState = (newlyCreatedOpening) => {
 
   const renderProfile = (routerProps) => {
     return <User user={currentUser}
-    openings={currentUser.openings} openingSubmit={handleOpeningSubmit}/>
+    openings={currentUser.openings}
+    openingSubmit={handleOpeningSubmit}
+    deleteOpening={deleteOpeningFromState}/>
   }
 
 

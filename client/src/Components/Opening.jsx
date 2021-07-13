@@ -27,12 +27,7 @@ const useStyles = makeStyles({
 
 
 
-const deleteHandler = () => {
-    
 
-
-
-}
 
 
 
@@ -46,6 +41,23 @@ export default function Opening(props) {
     const classes = useStyles();
     const bull = <span className={classes.bullet}>•</span>;
 
+    const deleteHandler = () => {
+      fetch(`http://localhost:3000/openings/${props.opening.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json",
+          "authorization": props.currentUser.token
+      },
+      })
+        .then((r) => r.json())
+        .then((r) => props.deleteOpening(r.id));
+      
+    
+    
+    
+    }
+
+    console.log(props.opening)
     return (
     <div>
         <br></br>
@@ -59,10 +71,13 @@ export default function Opening(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={deleteHandler}>Delete</Button>
+        <Button size="small"
+        onClick={deleteHandler}
+         >Delete</Button>
       </CardActions>
     </Card>
     <br></br>
     </div>
     )
 }
+

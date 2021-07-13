@@ -56,7 +56,10 @@ export default function User(props) {
 
       // [{}, {}, {}] -> [<>, <>, <>]
   let arrayOfComponents = props.openings.map(openingObj => {
-    return <Opening key={openingObj.id} opening={openingObj}/>
+    return <Opening key={openingObj.id} 
+    opening={openingObj}
+    currentUser={props.user}
+    deleteOpening={props.deleteOpening}/>
   })
 
 
