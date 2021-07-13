@@ -3,7 +3,7 @@ import {useState} from 'react';
 import '@fontsource/roboto'
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-
+import Button from '@material-ui/core/Button';
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
@@ -69,7 +69,12 @@ const handleChangePassword = (e) => {
               onChange={handleChangePassword}
               className={classes.root}
              />
-               <input type="submit" value="Submit"/>
+               <Button
+               label="Submit"
+                type="submit"
+                variant="contained"
+                color="primary"
+                 value="Submit">Submit</Button>
              </form>
         </div>
     )

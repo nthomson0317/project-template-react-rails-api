@@ -8,7 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     minWidth: 675,
   },
@@ -23,17 +23,7 @@ const useStyles = makeStyles({
   pos: {
     marginBottom: 12,
   },
-});
-
-
-
-
-
-
-
-
-
-
+}));
 
 
 
@@ -61,9 +51,7 @@ export default function Opening(props) {
     return (
     <div>
         <br></br>
-        <Card className={classes.root} variant="outlined" onClick={() => {
-          props.renderGames}
-        }    > 
+        <Card className={classes.root} variant="outlined"     > 
       <CardContent>
         <Typography variant="h3" component="h2">
           {props.opening.name}
@@ -83,3 +71,6 @@ export default function Opening(props) {
     )
 }
 
+// onClick={() => {
+//   props.renderGames}
+// }

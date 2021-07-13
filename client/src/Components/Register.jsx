@@ -1,6 +1,18 @@
 import React from 'react'
 import {useState} from 'react';
 import '@fontsource/roboto'
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button'
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
+}));
 
 
 
@@ -22,6 +34,8 @@ export default function Register(props) {
     //STATE NUMBER 7
      const [country, setCountry]=useState("")
 
+     const classes = useStyles()
+
   
 let submitHandler = (e) => {
     e.preventDefault()
@@ -36,12 +50,7 @@ let submitHandler = (e) => {
         country: country
     }
     props.handleSubmit(formData)
-   
-
-
     }
-
-  
 
 
 const handleChangeUserName = (e) => {
@@ -73,52 +82,86 @@ const handleChangeCountry = (e) => {
         <div>    
             <form onSubmit={submitHandler}>
              <h1>{props.formName}</h1>
-             <label htmlFor="username">Username:</label>
-                <input type="text" autoComplete="off"
-                 name="username"
-                 value={userName}
-                 onChange={handleChangeUserName}
-                />
-             <label htmlFor="password">Password:</label>
-             <input type="password" autoComplete="off"
-                name="password"
-                value={password}
-                onChange={handleChangePassword}
-             />
-               {/* other inputs */}
-
-
-               <label htmlFor="name">Name:</label>
-             <input type="name" autoComplete="off"
-                name="name"
-                value={name}
-                onChange={handleChangeName}
-             />
-               <label htmlFor="rating">Rating:</label>
-             <input type="rating" autoComplete="off"
-                name="rating"
-                value={rating}
-                onChange={handleChangeRating}
-             />
-               <label htmlFor="age">Age:</label>
-             <input type="age" autoComplete="off"
-                name="age"
-                value={age}
-                onChange={handleChangeAge}
-             />
-               <label htmlFor="profile_pic">Profile Picture URL:</label>
-             <input type="profile_pic" autoComplete="off"
-                name="profile_pic"
-                value={profile_pic}
-                onChange={handleChangeProfilePic}
-             />
-                <label htmlFor="country">Country</label>
-             <input type="country" autoComplete="off"
-                name="country"
-                value={country}
-                onChange={handleChangeCountry}
-             />
-               <input type="submit" value="Submit"/>
+             <TextField 
+             label="Username"
+             type="text" 
+             autoComplete="off"
+             variant="outlined"
+             name="username"
+             value={userName}
+             onChange={handleChangeUserName}
+             className={classes.root}
+             htmlFor="username"></TextField>
+              
+             <TextField 
+             label="Password"
+             type="text"
+             htmlFor="password"
+             autoComplete="off"
+             variant="outlined"
+             name="password"
+             value={password}
+             onChange={handleChangePassword}
+             className={classes.root}
+             htmlFor="password"></TextField>
+             <TextField 
+             htmlFor="name"
+             label="Name"
+             type="name" 
+             autoComplete="off"
+             variant="outlined"
+             name="name"
+             value={name}
+             onChange={handleChangeName}
+             className={classes.root}
+             htmlFor="Name"></TextField>
+             <TextField
+            label="Rating"
+            type="text" 
+            autoComplete="off"
+            variant="outlined"
+            name="rating"
+            value={rating}
+            onChange={handleChangeRating}
+            className={classes.root}
+            htmlFor="rating"></TextField>
+             <TextField 
+             label="Age"
+             htmlFor="age"
+             type="text" 
+             autoComplete="off"
+             variant="outlined"
+             name="age"
+             value={age}
+             onChange={handleChangeAge}
+             className={classes.root}></TextField>
+            <TextField
+            label="Profile Pic"
+             htmlFor="profile_pic"
+             type="text" 
+             autoComplete="off"
+             variant="outlined"
+             name="profile_pic"
+             value={profile_pic}
+             onChange={handleChangeProfilePic}
+             className={classes.root}></TextField>
+            <TextField 
+            label="Country"
+            htmlFor="country"
+            type="text" 
+            autoComplete="off"
+            variant="outlined"
+            name="country"
+            value={country}
+            onChange={handleChangeCountry}
+            className={classes.root}></TextField>
+               <Button
+               label="Submit"
+                type="submit"
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                 value="Submit">Submit</Button>
 
              </form>
         </div>
