@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :games
   resources :openings
   resources :users, only: [:create, :index]
   # Routing logic: fallback requests for React Router.

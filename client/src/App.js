@@ -6,7 +6,7 @@ import Login from './Components/Login';
 import Home from './Components/Home';
 import {useState} from 'react';
 import Register from './Components/Register';
-
+import Game from './Components/Game';
 
 
 function App(props) {
@@ -19,7 +19,8 @@ function App(props) {
     profile_pic:"",
     country:"",
     token: "",
-    openings: []
+    openings: [],
+    games: []
     })
  
 
@@ -68,7 +69,8 @@ function App(props) {
         profile_pic: resp.user.profile_pic,
         country: resp.user.country,
         token: resp.token,
-        openings: resp.openings
+        openings: resp.openings,
+        games: resp.games
       })
   
       // localStorage.token = resp.token
@@ -153,9 +155,17 @@ const deleteOpeningFromState = (deletedId) => {
     return <User user={currentUser}
     openings={currentUser.openings}
     openingSubmit={handleOpeningSubmit}
-    deleteOpening={deleteOpeningFromState}/>
+    deleteOpening={deleteOpeningFromState}
+    renderGames={renderGames}/>
   }
 
+
+  const renderGames = (routerProps) => {
+    return <Game user={currentUser}
+    
+    
+    />
+  }
 
 console.log(currentUser)
   return (
@@ -167,6 +177,7 @@ console.log(currentUser)
           <Route path="/login" render={ renderForm } />
           <Route path="/register" render={ renderForm } />
           <Route path="/user" render={ renderProfile } />
+          <Route path="/games" render={ renderGames } />
           <Route path={'/'} >
           <Home />
           </Route> 

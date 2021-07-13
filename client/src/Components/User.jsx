@@ -59,7 +59,8 @@ export default function User(props) {
     return <Opening key={openingObj.id} 
     opening={openingObj}
     currentUser={props.user}
-    deleteOpening={props.deleteOpening}/>
+    deleteOpening={props.deleteOpening}
+    renderGames={props.renderGames}/>
   })
 
 
