@@ -35,11 +35,11 @@ const useStyles = makeStyles({
 export default function Game(props) {
   const classes = useStyles();
 
-  let gamesOpening = props.user.openings.find((opening) => {
-   return opening.id == arrayOfComponents[0].props.game.opening_id
-  })
-
-
+  
+  
+  // let gamesOpening = props.user.openings.find((opening) => {
+  //  return opening.id == 
+  // })
   let arrayOfComponents = props.openingGames.map(gameObj => {
 
   return (
@@ -64,15 +64,15 @@ export default function Game(props) {
   )})
 
     console.log(props.openingGames)
-    console.log(props.user.openings)
-    console.log(arrayOfComponents[0].props.game.opening_id)
+    console.log(props.user.games)
+   
     return (
 
           <div>
             <Typography
           variant="h3"
             >
-            Opening: {gamesOpening}
+            Opening: 
             </Typography>
           {arrayOfComponents}
           

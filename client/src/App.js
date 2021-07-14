@@ -207,9 +207,8 @@ const deleteOpeningFromState = (deletedId) => {
     
   }
 
-console.log(currentUser)
-console.log(props)
-console.log(localStorage)
+  console.log(currentUser)
+
   return (
     
            <div>

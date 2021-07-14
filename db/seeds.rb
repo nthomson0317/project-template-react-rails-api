@@ -22,8 +22,8 @@ kid = Opening.create(name: 'kings indian', moves: '1.d4 Nf6 2.c4 g6', user_id: 1
 kings_gambit = Opening.create(name: 'kings gambit', moves: '1.e4 e5 2.f4', user_id: 2)
 
 game1= Game.create(name: "game1", moves: "Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6", notes: "I lost the knight early...it all went downhill form there. lol", opening_id: 1)
-game2= Game.create(name: "game1", moves: "Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6", notes: "I lost the pawn early...it all went downhill form there. lol", opening_id: 1)
-game3= Game.create(name: "game1", moves: "Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6", notes: "I lost the bishop early...it all went downhill form there. lol", opening_id: 1)
-game4= Game.create(name: "game1", moves: "Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6", notes: "I lost the queen early...it all went downhill form there. lol", opening_id: 2)
-game5= Game.create(name: "game1", moves: "Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6", notes: "I lost the king early...it all went downhill form there. lol", opening_id: 2)
-game6= Game.create(name: "game1", moves: "Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6", notes: "I lost the everything early...it all went downhill form there. lol", opening_id: 3)
+game2= Game.create(name: "game2", moves: "Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6", notes: "I lost the pawn early...it all went downhill form there. lol", opening_id: 1)
+game3= Game.create(name: "game3", moves: "Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6", notes: "I lost the bishop early...it all went downhill form there. lol", opening_id: 1)
+game4= Game.create(name: "game4", moves: "Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6", notes: "I lost the queen early...it all went downhill form there. lol", opening_id: 2)
+game5= Game.create(name: "game5", moves: "Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6", notes: "I lost the king early...it all went downhill form there. lol", opening_id: 2)
+game6= Game.create(name: "game6", moves: "Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6", notes: "I lost the everything early...it all went downhill form there. lol", opening_id: 3)
