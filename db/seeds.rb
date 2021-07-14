@@ -21,14 +21,6 @@ ruy = Opening.create(name: 'ruy lopez', moves: '1.e4 e5 2.Nf3 Nc6 3.Bb5', user_i
 kid = Opening.create(name: 'kings indian', moves: '1.d4 Nf6 2.c4 g6', user_id: 1)
 kings_gambit = Opening.create(name: 'kings gambit', moves: '1.e4 e5 2.f4', user_id: 2)
 
-<<<<<<< HEAD
-game1= Game.create(name: "game1", moves: "Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6", notes: "I lost the knight early...it all went downhill form there. lol", opening_id: 1)
-game2= Game.create(name: "game2", moves: "Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6", notes: "I lost the pawn early...it all went downhill form there. lol", opening_id: 1)
-game3= Game.create(name: "game3", moves: "Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6", notes: "I lost the bishop early...it all went downhill form there. lol", opening_id: 1)
-game4= Game.create(name: "game4", moves: "Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6", notes: "I lost the queen early...it all went downhill form there. lol", opening_id: 2)
-game5= Game.create(name: "game5", moves: "Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6", notes: "I lost the king early...it all went downhill form there. lol", opening_id: 2)
-game6= Game.create(name: "game6", moves: "Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6", notes: "I lost the everything early...it all went downhill form there. lol", opening_id: 3)
-=======
 game1= Game.create(name: "Thomson v. Zahid, Gibraltar, 2012", moves: "1.e4 c5 2.f4 Nc6 3.Nf3 e6 4.c3 d5 5.e5 f5 6.d4 Nh6 7.h3 Qb6 8.b3 Bd7 9.Be3 Nf7
     10.Qd2 O-O-O 11.Qf2 cxd4 12.Nxd4 Nxd4 13.Bxd4 Qc6 14.Nd2 b6 15.a4 Bc5 16.Bb5 Bxd4
     17.Qxd4 Qc5 18.Nf3 Bxb5 19.Qxc5+ bxc5 20.axb5 Kb7 21.Ke2 Ra8 22.Ra6 Rhe8
@@ -68,4 +60,3 @@ game6= Game.create(name: "Thomson v. Zahid, Geneva, 2021", moves: "1.d4 Nf6 2.Nf
     50.Ba3 Bc3 51.Rc1 Bg7 52.Qg5 h6 53.Qg4 Kh7 54.Rd1 Bf5 55.Qe2 Rb3 56.Rdg1 Bc3
     57.e4 Rxa3 58.exf5 Rb3 59.Rc1 Rb2 60.Rc2 Rxc2 61.Qxc2 Bf6 62.c5 h5 63.Qxa4 Qe7
     64.Qd1  1-0", notes: "A great win!", opening_id: 3)
->>>>>>> c78e99b3c3c7897b39539e489bd7cffe3151bc33
