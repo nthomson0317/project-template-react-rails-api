@@ -7,16 +7,13 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { useHistory } from "react-router-dom";
+import {useState } from 'react';
+
 
 
 const useStyles = makeStyles((theme) => ({
   root: {
     minWidth: 675,
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
   },
   title: {
     fontSize: 14,
@@ -24,18 +21,27 @@ const useStyles = makeStyles((theme) => ({
   pos: {
     marginBottom: 12,
   },
+  cardHovered: {
+    transform: "scale3d(1.05, 1.05, 1)"
+  }
 }));
 
 
 
 export default function Opening(props) {
 
+  const [state, setState] = useState({
+    raised:false,
+    shadow:1,
+  })
+
+
     const classes = useStyles();
     // const history = useHistory();
 
     const handleClick = () => {
       console.log('hi')
-       history.push("/games");
+       props.history.push("/games");
     }
 
     const deleteHandler = () => {
@@ -58,7 +64,12 @@ export default function Opening(props) {
     return (
     <div>
         <br></br>
-        <Card className={classes.root} variant="outlined"
+        <Card 
+        classes={{root: state.raised ? classes.cardHovered : ""}}
+        onMouseOver={()=>setState({ raised: true, shadow:3})} 
+        onMouseOut={()=>setState({ raised:false, shadow:1 })} 
+        raised={state.raised} zdepth={state.shadow}
+        variant="outlined"
         onClick={handleClick}
         > 
       <CardContent>

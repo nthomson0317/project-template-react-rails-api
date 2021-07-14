@@ -31,8 +31,19 @@ const useStyles = makeStyles({
 
 
 
-
 export default function Game(props) {
+
+let arrayOfComponents = props.user.games.map(gameObj => {
+  return <Card key={gameObj.id} 
+  game={gameObj}
+  currentUser={props.user}
+  history={props.history}
+  >Name: {gameObj.name}
+  <br></br>
+  Moves: {gameObj.moves}
+  <br></br>
+  Notes: {gameObj.notes} </Card>
+})
  console.log(props)
     const classes = useStyles();
     // const bull = <span className={classes.bullet}>•</span>;
@@ -53,7 +64,7 @@ export default function Game(props) {
     return (
 
         <div>
-          "Games component"
+          {arrayOfComponents}
           </div>
 
    

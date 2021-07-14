@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { Button } from '@material-ui/core';
 import {useState} from 'react';
+import { blueGrey } from '@material-ui/core/colors'
 
 
 
@@ -16,11 +17,12 @@ const useStyles = makeStyles((theme) => ({
             width: '25ch',
         },
     },
+    text: {
+        '&:hover': {
+          backgroundColor: blueGrey[50],
+        },
+      },
 }));
-
-
-
-
 
 
 
@@ -55,12 +57,12 @@ export default function User(props) {
 
 
       // [{}, {}, {}] -> [<>, <>, <>]
-  let arrayOfComponents = props.openings.map(openingObj => {
+  let arrayOfComponents = props.user.openings.map(openingObj => {
     return <Opening key={openingObj.id} 
     opening={openingObj}
     currentUser={props.user}
     deleteOpening={props.deleteOpening}
-    renderGames={props.renderGames}/>
+    history={props.history}/>
   })
 
 

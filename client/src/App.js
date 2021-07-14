@@ -4,7 +4,7 @@ import NavBar from './Components/NavBar';
 import User from './Components/User';
 import Login from './Components/Login';
 import Home from './Components/Home';
-import {useState} from 'react';
+import {useState, useEffect } from 'react';
 import Register from './Components/Register';
 import Game from './Components/Game';
 
@@ -22,6 +22,20 @@ function App(props) {
     openings: [],
     games: []
     })
+
+    // useEffect(() => {
+    //   if(localStorage.token){
+  
+    //     fetch("http://localhost:3000/me", {
+    //       headers: {
+    //         "authorization": localStorage.token
+    //       }
+    //     })
+    //       .then(res => res.json())
+    //       .then((res) => handleResponse(res))
+  
+    //   }
+    // })
  
 
   const handleLoginSubmit = (formData) => {
@@ -91,6 +105,23 @@ function App(props) {
   }
   }
 
+
+  const logOut = () => {
+    setCurrentUser({
+      id: 0,
+      username:'',
+      name:"",
+      rating: 0,
+      age:0,
+      profile_pic:"",
+      country:"",
+      token: "",
+      openings: [],
+      games: []
+    })
+    localStorage.clear()
+
+  }
   const renderForm = (routerProps) => {
     if(routerProps.location.pathname === "/login"){
       return <Login
@@ -156,30 +187,29 @@ const deleteOpeningFromState = (deletedId) => {
     openings={currentUser.openings}
     openingSubmit={handleOpeningSubmit}
     deleteOpening={deleteOpeningFromState}
+    history={props.history}
     />
   }
 
 
   const renderGames = (routerProps) => {
-    
-     
       return (<Game user={currentUser}/>
-    
       )
   }
 
 console.log(currentUser)
 console.log(props)
+console.log(localStorage)
   return (
     
            <div>
-              <NavBar/>
+              <NavBar logOut={logOut}/>
               <Switch>
                {/* FIRST ROUTE */}
           <Route path="/login" render={ renderForm } />
           <Route path="/register" render={ renderForm } />
           <Route path="/user" render={ renderProfile } />
-          <Route path="/games" component={Game} />
+          <Route path="/games" render={ renderGames } />
           <Route path={'/'} >
           <Home />
           </Route> 

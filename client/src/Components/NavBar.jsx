@@ -50,6 +50,13 @@ export default function NavBar(props) {
                 >Signup</Button>
                 </div>
                 </Link>
+
+                <Button 
+                onClick={props.logOut}
+                className = {classes.menuButton}
+                variant="contained"
+                color="default"
+                >Log Out</Button>
         </Toolbar>
       </AppBar>
     </div>
