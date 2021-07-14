@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import { useHistory } from "react-router-dom";
 
 
+
 const useStyles = makeStyles({
   root: {
     minWidth: 675,
@@ -32,47 +33,56 @@ const useStyles = makeStyles({
 
 
 export default function Game(props) {
+  const classes = useStyles();
 
-let arrayOfComponents = props.user.games.map(gameObj => {
-  return <Card key={gameObj.id} 
+  let gamesOpening = props.user.openings.find((opening) => {
+   return opening.id == arrayOfComponents[0].props.game.opening_id
+  })
+
+
+  let arrayOfComponents = props.openingGames.map(gameObj => {
+
+  return (
+
+  <Card key={gameObj.id} 
   game={gameObj}
   currentUser={props.user}
-  history={props.history}
-  >Name: {gameObj.name}
+  history={props.history}>
+  <CardContent>
+  <Typography variant="h3" component="h2">
+    Name: {gameObj.name}
+  </Typography>
   <br></br>
-  Moves: {gameObj.moves}
-  <br></br>
-  Notes: {gameObj.notes} </Card>
-})
- console.log(props)
-    const classes = useStyles();
-    // const bull = <span className={classes.bullet}>•</span>;
+  <Typography variant="body2" component="p">
+    Moves: {gameObj.moves}
+  </Typography>
 
-    // const deleteHandler = () => {
-    //   fetch(`http://localhost:3000/openings/${props.opening.id}`, {
-    //     method: "DELETE",
-    //     headers: {
-    //       "Content-type": "application/json",
-    //       "authorization": props.currentUser.token
-    //   },
-    //   })
-    //     .then((r) => r.json())
-    //     .then((r) => props.deleteOpening(r.id));
-      
-    
-    
+  <br></br>
+  Notes: {gameObj.notes} 
+  </CardContent>
+  </Card>
+  )})
+
+    console.log(props.openingGames)
+    console.log(props.user.openings)
+    console.log(arrayOfComponents[0].props.game.opening_id)
     return (
 
-        <div>
+          <div>
+            <Typography
+          variant="h3"
+            >
+            Opening: {gamesOpening}
+            </Typography>
           {arrayOfComponents}
+          
           </div>
-
    
 
 
 
 
     )
-}
+    }
 
 

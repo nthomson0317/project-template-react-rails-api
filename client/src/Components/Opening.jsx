@@ -35,13 +35,24 @@ export default function Opening(props) {
     shadow:1,
   })
 
+  const [opening, setOpening] = useState({
+    opening: ''
+  })
+
 
     const classes = useStyles();
     // const history = useHistory();
 
-    const handleClick = () => {
-      console.log('hi')
-       props.history.push("/games");
+    const handleClick = (e) => {
+      // console.log(props.opening.id)
+      // console.log(e.target)
+      // console.log(props.currentUser.games)
+      setOpening({
+        opening: props.opening.id
+      })
+      console.log(opening)
+  
+       props.history.push(`/openings/${props.opening.id}/games`);
     }
 
     const deleteHandler = () => {
@@ -56,10 +67,6 @@ export default function Opening(props) {
         .then((r) => props.deleteOpening(r.id));
     }
 
-
-
-
-    console.log(props)
     
     return (
     <div>

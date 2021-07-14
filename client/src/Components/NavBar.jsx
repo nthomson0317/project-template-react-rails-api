@@ -30,6 +30,16 @@ export default function NavBar(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
+                <Link to={'/'}
+                style={{ textDecoration: 'none' }}>
+                <div className="home">
+                <Button
+                className = {classes.menuButton}
+                variant="contained"
+                color="default"
+                >Home</Button>
+                </div>
+                </Link>
                 <Link to={'/login'}
                 style={{ textDecoration: 'none' }}>
                 <div className="login">

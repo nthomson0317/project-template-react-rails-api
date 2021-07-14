@@ -192,9 +192,19 @@ const deleteOpeningFromState = (deletedId) => {
   }
 
 
-  const renderGames = (routerProps) => {
-      return (<Game user={currentUser}/>
+  // const renderGames = (routerProps) => {
+  //     return (<Game user={currentUser}/>
+  //     )
+  // }
+
+  const renderOpeningGames = (routerProps) => {
+    let openingGames = currentUser.games.filter((gameObj) => {
+      return gameObj.opening_id == Number(routerProps.match.params.id)
+    })
+    return (<Game user={currentUser}
+    openingGames={openingGames}/>
       )
+    
   }
 
 console.log(currentUser)
@@ -209,7 +219,8 @@ console.log(localStorage)
           <Route path="/login" render={ renderForm } />
           <Route path="/register" render={ renderForm } />
           <Route path="/user" render={ renderProfile } />
-          <Route path="/games" render={ renderGames } />
+          {/* <Route path="/games" render={ renderGames } /> */}
+          <Route path="/openings/:id/games" render= { renderOpeningGames } />
           <Route path={'/'} >
           <Home />
           </Route> 
