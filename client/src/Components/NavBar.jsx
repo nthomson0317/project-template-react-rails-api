@@ -60,13 +60,15 @@ export default function NavBar(props) {
                 >Signup</Button>
                 </div>
                 </Link>
-
+                <Link to={'/'}
+                style={{ textDecoration: 'none' }}>
                 <Button 
                 onClick={props.logOut}
                 className = {classes.menuButton}
                 variant="contained"
                 color="default"
                 >Log Out</Button>
+                </Link>
         </Toolbar>
       </AppBar>
     </div>
