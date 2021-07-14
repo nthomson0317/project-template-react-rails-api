@@ -1,5 +1,5 @@
 class OpeningSerializer < ActiveModel::Serializer
   attributes :id, :name, :moves
-  has_one :user
+  belongs_to :user
   has_many :games
 end

@@ -202,12 +202,34 @@ const deleteOpeningFromState = (deletedId) => {
       return gameObj.opening_id == Number(routerProps.match.params.id)
     })
     return (<Game user={currentUser}
-    openingGames={openingGames}/>
+    openingGames={openingGames} deleteGameFromState={deleteGameFromState}/>
       )
     
   }
 
-  console.log(currentUser)
+
+  //DELETE GAME FROM STATE IN THE FRONT
+const deleteGameFromState = (deletedId) => {
+   
+
+  let copyOfGames = currentUser.games.filter((gameObj) => {
+    return gameObj.id !== deletedId
+  })
+  setCurrentUser({
+    id: currentUser.id,
+    username: currentUser.username,
+    name: currentUser.name,
+    rating: currentUser.rating,
+    age: currentUser.age,
+    profile_pic: currentUser.profile_pic,
+    country: currentUser.country,
+    token: currentUser.token,
+    openings: currentUser.openings,
+    games: copyOfGames
+  })
+  
+}
+
 
   return (
     

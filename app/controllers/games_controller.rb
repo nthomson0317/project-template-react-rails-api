@@ -11,8 +11,9 @@ class GamesController < ApplicationController
 
     def destroy
         game = @user.games.find(params[:id])
+        params
         game.destroy
-        render json: game
+        render json: {}
     end
 
     def index

@@ -31,38 +31,23 @@ const useStyles = makeStyles({
 export default function Game(props) {
   const classes = useStyles();
   
-  console.log(props)
+  console.log(props.user)
   
 // GAMES DELETION BUTTON
-  const deleteGameHandler = () => {
-    console.log(props.game)
-
-
-    // fetch(`http://localhost:3000/games/${props.opening.id}`, {
-    //   method: "DELETE",
-    //   headers: {
-    //     "Content-type": "application/json",
-    //     "authorization": props.currentUser.token
-    // },
-    // })
-    //   .then((r) => r.json())
-    //   .then((r) => props.deleteOpening(r.id));
-    
+  const deleteGameHandler = (id) => {
   
-  
-  
+    console.log(id)
+    fetch(`http://localhost:3000/games/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        "authorization": props.user.token
+    },
+    })
+      .then((r) => r.json())
+      .then((r) => props.deleteGameFromState(id));
+      // props.deleteGameFromState
   }
-
-
-
-
-
-
-
-
-
-
-
 
 
   
@@ -70,7 +55,7 @@ export default function Game(props) {
   //  return opening.id == 
   // })
   let arrayOfComponents = props.openingGames.map(gameObj => {
-
+     
   return (
 
   <Card key={gameObj.id} 
@@ -89,7 +74,7 @@ export default function Game(props) {
   <br></br>
   Notes: {gameObj.notes} 
   <br></br>
-  <Button game={gameObj} onClick={deleteGameHandler}>Delete</Button>
+  <Button game={gameObj} onClick={() => {deleteGameHandler(gameObj.id)}}>Delete</Button>
   </CardContent>
   </Card>
   )})
@@ -98,10 +83,8 @@ export default function Game(props) {
    
     return (
 
-          <div>
-         
+          <div> 
           {arrayOfComponents}
-          
           </div>
    
 
