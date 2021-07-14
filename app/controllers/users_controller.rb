@@ -13,7 +13,6 @@ class UsersController < ApplicationController
 
     def create
         user = User.create(user_params)
-        # byebug
         if user.valid?
             render json: user
         else
@@ -23,7 +22,6 @@ class UsersController < ApplicationController
 
     def login
         user = User.find_by(username: params[:formData][:username])
-        byebug
         if user && user.authenticate(params[:formData][:password])
             wristband = encode_token({user_id: user.id})
             render json: {user: UserSerializer.new(user), token: wristband, openings: user.openings, games: user.games}
