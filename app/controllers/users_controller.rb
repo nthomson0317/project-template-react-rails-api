@@ -22,10 +22,6 @@ class UsersController < ApplicationController
 
     def login
         user = User.find_by(username: params[:formData][:username])
-<<<<<<< HEAD
-       
-=======
->>>>>>> c78e99b3c3c7897b39539e489bd7cffe3151bc33
         if user && user.authenticate(params[:formData][:password])
             wristband = encode_token({user_id: user.id})
             render json: {user: UserSerializer.new(user), token: wristband, openings: user.openings, games: user.games}

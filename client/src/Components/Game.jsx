@@ -28,14 +28,43 @@ const useStyles = makeStyles({
 });
 
 
-
-
-
-
 export default function Game(props) {
   const classes = useStyles();
-
   
+  console.log(props)
+  
+// GAMES DELETION BUTTON
+  const deleteGameHandler = () => {
+    console.log(props.game)
+
+
+    // fetch(`http://localhost:3000/games/${props.opening.id}`, {
+    //   method: "DELETE",
+    //   headers: {
+    //     "Content-type": "application/json",
+    //     "authorization": props.currentUser.token
+    // },
+    // })
+    //   .then((r) => r.json())
+    //   .then((r) => props.deleteOpening(r.id));
+    
+  
+  
+  
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   // let gamesOpening = props.user.openings.find((opening) => {
   //  return opening.id == 
@@ -50,7 +79,7 @@ export default function Game(props) {
   history={props.history}>
   <CardContent>
   <Typography variant="h3" component="h2">
-    Name: {gameObj.name}
+    {gameObj.name}
   </Typography>
   <br></br>
   <Typography variant="body2" component="p">
@@ -59,21 +88,18 @@ export default function Game(props) {
 
   <br></br>
   Notes: {gameObj.notes} 
+  <br></br>
+  <Button game={gameObj} onClick={deleteGameHandler}>Delete</Button>
   </CardContent>
   </Card>
   )})
 
-    console.log(props.openingGames)
-    console.log(props.user.games)
+
    
     return (
 
           <div>
-            <Typography
-          variant="h3"
-            >
-            Opening: 
-            </Typography>
+         
           {arrayOfComponents}
           
           </div>
