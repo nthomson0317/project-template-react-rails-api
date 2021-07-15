@@ -155,7 +155,7 @@ function App(props) {
 
 //THIS IS OUR HANDLE SUBMIT FOR ADDING A GAME
 const handleGameSubmit = (formData) => {
-  console.log(formData)
+ 
 
   fetch("http://localhost:3000/games", {
       method: "POST",
@@ -172,6 +172,7 @@ const handleGameSubmit = (formData) => {
       })
       .then(res => res.json())
       .then((res) => addGameToState(res))
+      // addGameToState
 }
 
 // CHANGE THE STATE OF OPENINGS IN ZE FRONT
@@ -199,15 +200,27 @@ const deleteOpeningFromState = (deletedId) => {
 
 //ADD GAME TO STATE IN THE FRONT
 const addGameToState = (newlyCreatedGame) => {
-  console.log(currentUser.openings)
+  console.log(currentUser)
  let copyOfGames= [...currentUser.games, newlyCreatedGame]
  console.log(newlyCreatedGame)
  console.log(copyOfGames)
 
 
  setCurrentUser({
+  id: currentUser.id,
+  username: currentUser.username,
+  name: currentUser.name,
+  rating: currentUser.rating,
+  age: currentUser.age,
+  profile_pic: currentUser.profile_pic,
+  country: currentUser.country,
+  token: currentUser.token,
+  openings: currentUser.openings,
   games: copyOfGames
  })
+
+ console.log(currentUser)
+
 }
 
 

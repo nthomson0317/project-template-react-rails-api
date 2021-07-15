@@ -38,7 +38,7 @@ let submitHandler = (e) => {
         notes: notes,
         opening_id: opening}      
         props.handleGameSubmit(formData)
-        console.log(formData)
+        // console.log(formData)
   }
 
 
