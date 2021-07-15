@@ -27,11 +27,16 @@ const useStyles = makeStyles({
 
 export default function Learn() {
     return (
-        <div>
+        <div style={{ 
+            backgroundColor: 'rgba(255, 255, 255, 0.7)'}}>
+        <div style={{ 
+            width: '600px'}}>
         <Typography variant="h3">
             LEARNING OPENING THEORY!
         </Typography>
-        <Typography>
+        <Typography style={{ 
+                color: 'rgba(0, 11, 26, 0.9)',
+                width: "560"}}>
         <p>A chess opening or simply an opening refers to the initial moves of a chess game. The term can refer to the 
             initial moves by either side, White or Black, but an opening by Black may also be known as a defense. There
              are dozens of different openings, and hundreds of variants. The Oxford Companion to Chess lists 1,327 named
@@ -45,7 +50,8 @@ export default function Learn() {
 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
 allowfullscreen></iframe>
 <br></br>
-<Typography>
+<Typography style={{ 
+                color: 'rgba(0, 11, 26, 0.9)'}}>
        <p> Opening moves that are considered standard (often catalogued in a reference work such as the Encyclopaedia of 
            Chess Openings) are referred to as "book moves", or simply "book". Reference works often present move sequences
             in simple algebraic notation, opening trees, or theory tables. When a game begins to deviate from known opening theory,
@@ -58,10 +64,17 @@ allowfullscreen></iframe>
         can become unbalanced if it is to the exclusion of tactical training and middlegame and endgame strategy.</p>
         </Typography>
 <br></br>
-<Typography>
+<Typography style={{ 
+                color: 'rgba(0, 11, 26, 0.9)'}}>
         <p>Wikipedia contributors. "Chess opening." Wikipedia, The Free Encyclopedia. Wikipedia, The Free Encyclopedia, 17 May. 2021.
              Web. 15 Jul. 2021.</p>
              </Typography>
+            </div>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
         </div>
     )
 }

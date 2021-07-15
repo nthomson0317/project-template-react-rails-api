@@ -79,7 +79,8 @@ const handleChangeCountry = (e) => {
 
  
     return (
-        <div>    
+        <div style={{ 
+          backgroundColor: 'rgba(255, 255, 255, 0.9)'}}>    
             <form onSubmit={submitHandler}>
              <h1>{props.formName}</h1>
              <TextField 

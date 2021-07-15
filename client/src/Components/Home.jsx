@@ -5,15 +5,18 @@ import Typography from '@material-ui/core/Typography';
 
 export default function Home(props) {
     return (
-        <div>
+        <div style={{ 
+            backgroundColor: 'rgba(0, 0, 0, 0.6)'}}>
             <Typography variant="h2"className="header"
-            color="primary">Open Chessame</Typography>
+             style={{ 
+                color: 'rgba(210, 220, 231, 1)'}}>Open Chessame</Typography>
             <Typography variant="subtitle1"
-            color="secondary">A Resource to Improve Your Chess Openings</Typography>
+            style={{ 
+                color: 'rgba(210, 220, 231, 1)'}}>A Resource to Improve Your Chess Openings</Typography>
             <br></br>
             <br></br>
             <br></br>
-            <CurrentStats></CurrentStats>
+            {/* <CurrentStats></CurrentStats> */}
             
         </div>
     )

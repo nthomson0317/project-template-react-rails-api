@@ -71,20 +71,31 @@ console.log(props)
 
     return (
         <div>
-            <Typography variant="h1">Welcome, {props.user.name} </Typography>
+            <Typography variant="h1" style={{ 
+                color: 'rgba(250, 250, 255, 1)'}}>Welcome, {props.user.name} </Typography>
             <br></br>
             <br></br>
-            <Typography variant="h4"> Username: {props.user.username}</Typography>
-            <Typography variant="h4"> Rating: {props.user.rating} </Typography>
-            <Typography variant="h4"> Country: {props.user.country}</Typography>
+            <Typography variant="h4" style={{ 
+                color: 'rgba(250, 250, 255, 1)',
+                backgroundColor: 'rgba(0, 11, 26, 0.9)'}}> Username: {props.user.username}</Typography>
+            <Typography variant="h4" style={{ 
+                color: 'rgba(250, 250, 255, 1)',
+                backgroundColor: 'rgba(0, 11, 26, 0.9)'}}> Rating: {props.user.rating} </Typography>
+            <Typography variant="h4" style={{ 
+                color: 'rgba(250, 250, 255, 1)',
+                backgroundColor: 'rgba(0, 11, 26, 0.9)'}}> Country: {props.user.country}</Typography>
             <br></br>
             <br></br>
             <br></br>
             <br></br>
-            <Typography variant="h4">Openings: </Typography>
+            <Typography variant="h1" style={{ 
+                color: 'rgba(250, 250, 255, 1)'}}>Openings: </Typography>
             {arrayOfComponents}
-            <Typography align="center" variant="h4">Log a New Opening: </Typography>
-            <form className={classes.root} noValidate autoComplete="off" align="center" >
+            <Typography align="center" variant="h4" style={{ 
+            backgroundColor: 'rgba(0, 11, 26, 0.9)',
+            color: 'rgba(250, 250, 255, 1)'}}>Log a New Opening: </Typography>
+            <form className={classes.root} noValidate autoComplete="off" align="center" style={{ 
+          backgroundColor: 'rgba(255, 255, 255, 0.9)'}}>
             <TextField id="standard-basic" label="Opening Name" onChange={handleChangeName} value={name}/>
             <TextField id="standard-basic" label="Opening Moves...Ex. 1.d4 Nf6 2.c4 g6" onChange={handleChangeMoves} value={moves}/>
             <Button variant="outlined" color="primary" type="submit" value="submit" onClick={submitOpeningHandler}>Submit</Button>

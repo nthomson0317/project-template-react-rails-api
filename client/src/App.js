@@ -124,7 +124,8 @@ function App(props) {
   }
   const renderForm = (routerProps) => {
     if(routerProps.location.pathname === "/login"){
-      return <Login
+      return <Login style={{ 
+        color: 'rgba(210, 220, 231, 1)'}}
         formName="Login Form"
         handleSubmit={handleLoginSubmit}
       />
@@ -291,7 +292,11 @@ const deleteGameFromState = (deletedId) => {
 
   return (
     
-           <div>
+           <div style={{ 
+            backgroundImage: `url('https://cdn.dribbble.com/users/4154951/screenshots/14141953/media/8b80508e84327bb566b89c325d2da881.png')`,
+            // backgroundRepeat: 'no-repeat',
+            width:'1950px'
+        }}>
               <NavBar logOut={logOut}/>
               <Switch>
                {/* FIRST ROUTE */}
@@ -305,6 +310,38 @@ const deleteGameFromState = (deletedId) => {
           <Home />
           </Route> 
             </Switch>
+            <br></br>
+            <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
     </div>
 
 

@@ -28,7 +28,8 @@ export default function NavBar(props) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" style={{ 
+            backgroundColor: 'rgba(0, 11, 26, 0.9)'}}>
         <Toolbar>
                 <Link to={'/'}
                 style={{ textDecoration: 'none' }}>

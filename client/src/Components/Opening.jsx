@@ -71,7 +71,9 @@ export default function Opening(props) {
     return (
     <div>
         <br></br>
-        <Card 
+        <Card style={{ 
+                color: 'rgba(250, 250, 255, 1)',
+                backgroundColor: 'rgba(0, 11, 26, .7)'}}
         classes={{root: state.raised ? classes.cardHovered : ""}}
         onMouseOver={()=>setState({ raised: true, shadow:3})} 
         onMouseOut={()=>setState({ raised:false, shadow:1 })} 

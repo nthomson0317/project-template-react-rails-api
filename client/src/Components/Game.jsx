@@ -70,7 +70,9 @@ export default function Game(props) {
   <Card key={gameObj.id} 
   game={gameObj}
   currentUser={props.user}
-  history={props.history}>
+  history={props.history} style={{ 
+    color: 'rgba(250, 250, 255, 1)',
+    backgroundColor: 'rgba(0, 11, 26, .7)'}}>
   <CardContent>
   <Typography variant="h3" component="h2">
     {gameObj.name}
