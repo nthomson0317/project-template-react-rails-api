@@ -174,12 +174,19 @@ const deleteOpeningFromState = (deletedId) => {
      return openingObj.id !== deletedId
    })
    setCurrentUser({
-     openings: copyOfOpenings
+    id: currentUser.id,
+    username: currentUser.username,
+    name: currentUser.name,
+    rating: currentUser.rating,
+    age: currentUser.age,
+    profile_pic: currentUser.profile_pic,
+    country: currentUser.country,
+    token: currentUser.token,
+    openings: copyOfOpenings,
+    games: currentUser.games
    })
+   console.log(currentUser.openings)
 }
-
-
-
 
 
   const renderProfile = (routerProps) => {
@@ -198,6 +205,7 @@ const deleteOpeningFromState = (deletedId) => {
   // }
 
   const renderOpeningGames = (routerProps) => {
+    console.log(currentUser)
     let openingGames = currentUser.games.filter((gameObj) => {
       return gameObj.opening_id == Number(routerProps.match.params.id)
     })

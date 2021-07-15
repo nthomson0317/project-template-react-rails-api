@@ -88,11 +88,13 @@ export default function Opening(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small"
-        onClick={deleteHandler}
-         >Delete</Button>
+        
       </CardActions>
     </Card>
+
+    <Button size="small"
+        onClick={deleteHandler}
+        >Delete</Button>
     <br></br>
     </div>
     )
