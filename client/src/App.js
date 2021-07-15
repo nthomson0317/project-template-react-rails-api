@@ -97,13 +97,14 @@ function App(props) {
 
   let handleRegisterResponse = (resp) => {
     console.log(resp)
-    if(resp.user.id){
+    if(resp.errors){
+      alert(resp.errors)
+    }
+    else 
       alert("New user registered.")
       props.history.push("/login")
-    }
-    else {alert(resp.errors)
   }
-  }
+  
 
 
   const logOut = () => {

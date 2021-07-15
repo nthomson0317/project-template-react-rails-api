@@ -14,7 +14,6 @@ class UsersController < ApplicationController
     def create
         user = User.create(user_params)
         wristband = encode_token({user_id: user.id})
-        byebug
         if user.valid?
             render json: {user: UserSerializer.new(user), token: wristband, openings: user.openings, games: user.games}
         else
