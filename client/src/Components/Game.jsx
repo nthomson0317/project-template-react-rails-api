@@ -7,6 +7,10 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { useHistory } from "react-router-dom";
+import {useState } from 'react';
+import AddForm from './AddForm'
+
+//state to show create game form, toggled by button.
 
 
 
@@ -30,8 +34,10 @@ const useStyles = makeStyles({
 
 export default function Game(props) {
   const classes = useStyles();
+
+  const[toggled, setToggled] = useState(false)
   
-  console.log(props.user)
+  console.log(toggled)
   
 // GAMES DELETION BUTTON
   const deleteGameHandler = (id) => {
@@ -49,7 +55,10 @@ export default function Game(props) {
       // props.deleteGameFromState
   }
 
-
+  //ADD GAME BUTTON
+  const addNewGame = () => {
+    setToggled(!toggled)
+  }
   
   // let gamesOpening = props.user.openings.find((opening) => {
   //  return opening.id == 
@@ -83,7 +92,17 @@ export default function Game(props) {
    
     return (
 
-          <div> 
+          <div>
+            <br></br>
+            <Button
+            onClick={addNewGame}
+            className = {classes.menuButton}
+            variant="contained"
+            color="default"
+            >Add a new Game</Button>
+            {toggled ? <AddForm
+            handleGameSubmit={props.handleGameSubmit} 
+                />  : null }
           {arrayOfComponents}
           </div>
    

@@ -60,13 +60,25 @@ export default function NavBar(props) {
                 >Signup</Button>
                 </div>
                 </Link>
-
+                <Link to={'/'}
+                style={{ textDecoration: 'none' }}>
                 <Button 
                 onClick={props.logOut}
                 className = {classes.menuButton}
                 variant="contained"
                 color="default"
                 >Log Out</Button>
+                </Link>
+                <Link to={'/learn'}
+                style={{ textDecoration: 'none' }}>
+                <div className="learn">
+                <Button
+                className = {classes.menuButton}
+                variant="contained"
+                color="default"
+                >Learn Opening Theory</Button>
+                </div>
+                </Link>
         </Toolbar>
       </AppBar>
     </div>

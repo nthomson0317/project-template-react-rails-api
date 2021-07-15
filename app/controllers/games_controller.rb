@@ -4,7 +4,7 @@ class GamesController < ApplicationController
 
     def create
            
-        game = @user.games.create(games_params)
+        game = Game.create(games_params)
         render json: game
     end
 
@@ -23,7 +23,7 @@ class GamesController < ApplicationController
     end
 
     def games_params
-        params.permit(:name, :moves, :notes)
+        params.permit(:players, :moves, :opening_id, :opening, :formData, :name, :notes)
     end
 
 
