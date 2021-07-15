@@ -23,19 +23,19 @@ function App(props) {
     games: []
     })
 
-    // useEffect(() => {
-    //   if(localStorage.token){
+    useEffect(() => {
+      if(localStorage.token){
   
-    //     fetch("http://localhost:3000/me", {
-    //       headers: {
-    //         "authorization": localStorage.token
-    //       }
-    //     })
-    //       .then(res => res.json())
-    //       .then((res) => handleResponse(res))
+        fetch("http://localhost:3000/me", {
+          headers: {
+            "authorization": localStorage.token
+          }
+        })
+          .then(res => res.json())
+          .then((res) => handleResponse(res))
   
-    //   }
-    // })
+      }
+    }, [])
  
 
   const handleLoginSubmit = (formData) => {
@@ -71,7 +71,7 @@ function App(props) {
 }
 
   let handleResponse= (resp) => {
-    // console.log(resp)
+    console.log(resp)
     // console.log(resp.user)
     if(resp.token){
       setCurrentUser({
@@ -97,7 +97,7 @@ function App(props) {
 
   let handleRegisterResponse = (resp) => {
     console.log(resp)
-    if(resp.id){
+    if(resp.user.id){
       alert("New user registered.")
       props.history.push("/login")
     }
@@ -185,7 +185,16 @@ const addOpeningToState = (newlyCreatedOpening) => {
 
 
  setCurrentUser({
-  openings: copyOfOpenings
+  id: currentUser.id,
+  username: currentUser.username,
+  name: currentUser.name,
+  rating: currentUser.rating,
+  age: currentUser.age,
+  profile_pic: currentUser.profile_pic,
+  country: currentUser.country,
+  token: currentUser.token,
+  openings: copyOfOpenings,
+  games: currentUser.games
  })
 }
 
@@ -288,7 +297,7 @@ const deleteGameFromState = (deletedId) => {
   })
   
 }
-
+  console.log(currentUser)
 
   return (
     

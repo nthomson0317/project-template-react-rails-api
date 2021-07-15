@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
     def me
         wristband = encode_token({user_id: @user.id})
-        render json: {user: UserSerializer.new(@user), token: wristband}
+        render json: {user: UserSerializer.new(@user), token: wristband, openings: @user.openings, games: @user.games}
     end
     def index
         users = User.all
@@ -13,8 +13,10 @@ class UsersController < ApplicationController
 
     def create
         user = User.create(user_params)
+        wristband = encode_token({user_id: user.id})
+        byebug
         if user.valid?
-            render json: user
+            render json: {user: UserSerializer.new(user), token: wristband, openings: user.openings, games: user.games}
         else
             render json: {errors: user.errors.full_messages}
         end
