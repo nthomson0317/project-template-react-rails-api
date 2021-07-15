@@ -7,7 +7,7 @@ import Home from './Components/Home';
 import {useState, useEffect } from 'react';
 import Register from './Components/Register';
 import Game from './Components/Game';
-
+import Learn from './Components/Learn';
 
 function App(props) {
   const [currentUser,setCurrentUser]=useState({
@@ -223,7 +223,9 @@ const addGameToState = (newlyCreatedGame) => {
 
 }
 
-
+const renderLearn = (routerProps) => {
+  return <Learn />
+}
 
 
   const renderProfile = (routerProps) => {
@@ -287,6 +289,7 @@ const deleteGameFromState = (deletedId) => {
           <Route path="/user" render={ renderProfile } />
           {/* <Route path="/games" render={ renderGames } /> */}
           <Route path="/openings/:id/games" render= { renderOpeningGames } />
+          <Route path="/learn" render={ renderLearn } />
           <Route path={'/'} >
           <Home />
           </Route> 
