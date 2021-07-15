@@ -153,7 +153,27 @@ function App(props) {
         .then((res) => addOpeningToState(res))
 }
 
+//THIS IS OUR HANDLE SUBMIT FOR ADDING A GAME
+const handleGameSubmit = (formData) => {
+ 
 
+  fetch("http://localhost:3000/games", {
+      method: "POST",
+      headers: {
+          "Content-type": "application/json",
+          "authorization": currentUser.token
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        moves: formData.moves,
+        notes: formData.notes,
+        opening_id: formData.opening_id
+      })
+      })
+      .then(res => res.json())
+      .then((res) => addGameToState(res))
+      // addGameToState
+}
 
 // CHANGE THE STATE OF OPENINGS IN ZE FRONT
 const addOpeningToState = (newlyCreatedOpening) => {
@@ -178,6 +198,30 @@ const deleteOpeningFromState = (deletedId) => {
    })
 }
 
+//ADD GAME TO STATE IN THE FRONT
+const addGameToState = (newlyCreatedGame) => {
+  console.log(currentUser)
+ let copyOfGames= [...currentUser.games, newlyCreatedGame]
+ console.log(newlyCreatedGame)
+ console.log(copyOfGames)
+
+
+ setCurrentUser({
+  id: currentUser.id,
+  username: currentUser.username,
+  name: currentUser.name,
+  rating: currentUser.rating,
+  age: currentUser.age,
+  profile_pic: currentUser.profile_pic,
+  country: currentUser.country,
+  token: currentUser.token,
+  openings: currentUser.openings,
+  games: copyOfGames
+ })
+
+ console.log(currentUser)
+
+}
 
 
 
@@ -202,7 +246,8 @@ const deleteOpeningFromState = (deletedId) => {
       return gameObj.opening_id == Number(routerProps.match.params.id)
     })
     return (<Game user={currentUser}
-    openingGames={openingGames} deleteGameFromState={deleteGameFromState}/>
+    openingGames={openingGames} deleteGameFromState={deleteGameFromState}
+    handleGameSubmit={handleGameSubmit}/>
       )
     
   }
